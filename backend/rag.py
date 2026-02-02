@@ -48,6 +48,7 @@ class Chunk:
     images: List[str]
     html_file: str
     html_anchor: str
+    full_paragraph: str = ""  # The complete paragraph from source (with images embedded)
 
     @staticmethod
     def from_json(data: dict) -> "Chunk":
@@ -60,6 +61,7 @@ class Chunk:
             images=list(data.get("images", [])),
             html_file=data.get("html_file", ""),
             html_anchor=data.get("html_anchor", ""),
+            full_paragraph=data.get("full_paragraph", ""),
         )
 
     def to_json(self) -> dict:
@@ -72,6 +74,7 @@ class Chunk:
             "images": self.images,
             "html_file": self.html_file,
             "html_anchor": self.html_anchor,
+            "full_paragraph": self.full_paragraph,
         }
 
 

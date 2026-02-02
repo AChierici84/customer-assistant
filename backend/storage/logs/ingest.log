@@ -9006,3 +9006,266 @@
 2026-02-02 16:18:07,560 | INFO | Salvataggio indice con 321 chunk
 2026-02-02 16:18:38,712 | INFO | Indice salvato completamente
 2026-02-02 16:18:38,712 | INFO | Ingestione completata: manuali=3, chunk=321, immagini=87
+2026-02-02 16:33:26,014 | INFO | Reset completo: cancellazione database e file generati...
+2026-02-02 16:33:26,024 | INFO | Directory ChromaDB eliminata
+2026-02-02 16:33:26,075 | INFO | Immagini eliminate
+2026-02-02 16:33:26,075 | INFO | File HTML eliminati
+2026-02-02 16:33:26,075 | INFO | chunks.jsonl eliminato
+2026-02-02 16:33:26,075 | INFO | Reset completato
+2026-02-02 16:33:26,078 | INFO | Inizio ingestione manuale beko.pdf (brand=beko)
+2026-02-02 16:33:27,833 | INFO | Estratte 66 immagini da beko.pdf
+2026-02-02 16:33:29,651 | INFO | Estratto testo da 56 pagine con struttura
+2026-02-02 16:33:29,651 | INFO | Chunking pagina 1 - testo: 129 char
+2026-02-02 16:33:29,651 | INFO | Elaborata pagina 1/56 - 1 chunk creati
+2026-02-02 16:33:29,651 | INFO | Chunking pagina 2 - testo: 2107 char
+2026-02-02 16:33:29,651 | INFO | Chunking pagina 3 - testo: 1528 char
+2026-02-02 16:33:29,660 | INFO | Chunking pagina 4 - testo: 1480 char
+2026-02-02 16:33:29,660 | INFO | Chunking pagina 5 - testo: 2203 char
+2026-02-02 16:33:29,660 | INFO | Elaborata pagina 5/56 - 7 chunk creati
+2026-02-02 16:33:29,660 | INFO | Chunking pagina 6 - testo: 767 char
+2026-02-02 16:33:29,663 | INFO | Chunking pagina 7 - testo: 2767 char
+2026-02-02 16:33:29,663 | INFO | Chunking pagina 8 - testo: 3022 char
+2026-02-02 16:33:29,663 | INFO | Chunking pagina 9 - testo: 2452 char
+2026-02-02 16:33:29,663 | INFO | Chunking pagina 10 - testo: 4022 char
+2026-02-02 16:33:29,665 | INFO | Elaborata pagina 10/56 - 12 chunk creati
+2026-02-02 16:33:29,665 | INFO | Chunking pagina 11 - testo: 3214 char
+2026-02-02 16:33:29,665 | INFO | Chunking pagina 12 - testo: 3280 char
+2026-02-02 16:33:29,670 | INFO | Chunking pagina 13 - testo: 4365 char
+2026-02-02 16:33:29,670 | INFO | Chunking pagina 14 - testo: 2424 char
+2026-02-02 16:33:29,670 | INFO | Chunking pagina 15 - testo: 2462 char
+2026-02-02 16:33:29,673 | INFO | Elaborata pagina 15/56 - 26 chunk creati
+2026-02-02 16:33:29,673 | INFO | Chunking pagina 16 - testo: 3941 char
+2026-02-02 16:33:29,675 | INFO | Chunking pagina 17 - testo: 3638 char
+2026-02-02 16:33:29,675 | INFO | Chunking pagina 18 - testo: 3890 char
+2026-02-02 16:33:29,676 | INFO | Chunking pagina 19 - testo: 3083 char
+2026-02-02 16:33:29,676 | INFO | Chunking pagina 20 - testo: 4071 char
+2026-02-02 16:33:29,676 | INFO | Elaborata pagina 20/56 - 33 chunk creati
+2026-02-02 16:33:29,676 | INFO | Chunking pagina 21 - testo: 3049 char
+2026-02-02 16:33:29,676 | INFO | Chunking pagina 22 - testo: 2953 char
+2026-02-02 16:33:29,676 | INFO | Chunking pagina 23 - testo: 2859 char
+2026-02-02 16:33:29,676 | INFO | Chunking pagina 24 - testo: 3059 char
+2026-02-02 16:33:29,681 | INFO | Chunking pagina 25 - testo: 3989 char
+2026-02-02 16:33:29,681 | INFO | Elaborata pagina 25/56 - 42 chunk creati
+2026-02-02 16:33:29,682 | INFO | Chunking pagina 26 - testo: 5580 char
+2026-02-02 16:33:29,682 | INFO | Chunking pagina 27 - testo: 4874 char
+2026-02-02 16:33:29,682 | INFO | Chunking pagina 28 - testo: 2236 char
+2026-02-02 16:33:29,682 | INFO | Chunking pagina 29 - testo: 91 char
+2026-02-02 16:33:29,684 | INFO | Chunking pagina 30 - testo: 2059 char
+2026-02-02 16:33:29,684 | INFO | Elaborata pagina 30/56 - 58 chunk creati
+2026-02-02 16:33:29,684 | INFO | Chunking pagina 31 - testo: 1938 char
+2026-02-02 16:33:29,684 | INFO | Chunking pagina 32 - testo: 2692 char
+2026-02-02 16:33:29,684 | INFO | Chunking pagina 33 - testo: 1110 char
+2026-02-02 16:33:29,684 | INFO | Chunking pagina 34 - testo: 2859 char
+2026-02-02 16:33:29,684 | INFO | Chunking pagina 35 - testo: 2882 char
+2026-02-02 16:33:29,684 | INFO | Elaborata pagina 35/56 - 63 chunk creati
+2026-02-02 16:33:29,684 | INFO | Chunking pagina 36 - testo: 3092 char
+2026-02-02 16:33:29,684 | INFO | Chunking pagina 37 - testo: 3467 char
+2026-02-02 16:33:29,684 | INFO | Chunking pagina 38 - testo: 3270 char
+2026-02-02 16:33:29,684 | INFO | Chunking pagina 39 - testo: 4488 char
+2026-02-02 16:33:29,684 | INFO | Chunking pagina 40 - testo: 2201 char
+2026-02-02 16:33:29,684 | INFO | Elaborata pagina 40/56 - 73 chunk creati
+2026-02-02 16:33:29,684 | INFO | Chunking pagina 41 - testo: 2274 char
+2026-02-02 16:33:29,684 | INFO | Chunking pagina 42 - testo: 3992 char
+2026-02-02 16:33:29,684 | INFO | Chunking pagina 43 - testo: 3429 char
+2026-02-02 16:33:29,684 | INFO | Chunking pagina 44 - testo: 3579 char
+2026-02-02 16:33:29,691 | INFO | Chunking pagina 45 - testo: 3909 char
+2026-02-02 16:33:29,691 | INFO | Elaborata pagina 45/56 - 82 chunk creati
+2026-02-02 16:33:29,691 | INFO | Chunking pagina 46 - testo: 3643 char
+2026-02-02 16:33:29,691 | INFO | Chunking pagina 47 - testo: 2560 char
+2026-02-02 16:33:29,692 | INFO | Chunking pagina 48 - testo: 2960 char
+2026-02-02 16:33:29,692 | INFO | Chunking pagina 49 - testo: 2723 char
+2026-02-02 16:33:29,692 | INFO | Chunking pagina 50 - testo: 3471 char
+2026-02-02 16:33:29,692 | INFO | Elaborata pagina 50/56 - 87 chunk creati
+2026-02-02 16:33:29,692 | INFO | Chunking pagina 51 - testo: 5468 char
+2026-02-02 16:33:29,694 | INFO | Chunking pagina 52 - testo: 4621 char
+2026-02-02 16:33:29,694 | INFO | Chunking pagina 53 - testo: 0 char
+2026-02-02 16:33:29,694 | INFO | Chunking pagina 54 - testo: 0 char
+2026-02-02 16:33:29,694 | INFO | Chunking pagina 55 - testo: 0 char
+2026-02-02 16:33:29,694 | INFO | Elaborata pagina 55/56 - 98 chunk creati
+2026-02-02 16:33:29,694 | INFO | Chunking pagina 56 - testo: 19 char
+2026-02-02 16:33:29,694 | INFO | Generazione HTML per beko.pdf
+2026-02-02 16:33:29,698 | INFO | Creati 99 chunk per beko.pdf
+2026-02-02 16:33:29,698 | INFO | Inizio ingestione manuale electroline.pdf (brand=electroline)
+2026-02-02 16:33:29,919 | INFO | Estratte 1 immagini da electroline.pdf
+2026-02-02 16:33:30,241 | INFO | Estratto testo da 60 pagine con struttura
+2026-02-02 16:33:30,241 | INFO | Chunking pagina 1 - testo: 50 char
+2026-02-02 16:33:30,241 | INFO | Elaborata pagina 1/60 - 1 chunk creati
+2026-02-02 16:33:30,241 | INFO | Chunking pagina 2 - testo: 0 char
+2026-02-02 16:33:30,241 | INFO | Chunking pagina 3 - testo: 1114 char
+2026-02-02 16:33:30,251 | INFO | Chunking pagina 4 - testo: 1564 char
+2026-02-02 16:33:30,255 | INFO | Chunking pagina 5 - testo: 1170 char
+2026-02-02 16:33:30,255 | INFO | Elaborata pagina 5/60 - 13 chunk creati
+2026-02-02 16:33:30,255 | INFO | Chunking pagina 6 - testo: 1567 char
+2026-02-02 16:33:30,255 | INFO | Chunking pagina 7 - testo: 1057 char
+2026-02-02 16:33:30,255 | INFO | Chunking pagina 8 - testo: 2025 char
+2026-02-02 16:33:30,255 | INFO | Chunking pagina 9 - testo: 913 char
+2026-02-02 16:33:30,261 | INFO | Chunking pagina 10 - testo: 1671 char
+2026-02-02 16:33:30,261 | INFO | Elaborata pagina 10/60 - 24 chunk creati
+2026-02-02 16:33:30,261 | INFO | Chunking pagina 11 - testo: 1631 char
+2026-02-02 16:33:30,261 | INFO | Chunking pagina 12 - testo: 1671 char
+2026-02-02 16:33:30,261 | INFO | Chunking pagina 13 - testo: 1644 char
+2026-02-02 16:33:30,261 | INFO | Chunking pagina 14 - testo: 308 char
+2026-02-02 16:33:30,261 | INFO | Chunking pagina 15 - testo: 380 char
+2026-02-02 16:33:30,261 | INFO | Elaborata pagina 15/60 - 37 chunk creati
+2026-02-02 16:33:30,261 | INFO | Chunking pagina 16 - testo: 988 char
+2026-02-02 16:33:30,267 | INFO | Chunking pagina 17 - testo: 1121 char
+2026-02-02 16:33:30,267 | INFO | Chunking pagina 18 - testo: 969 char
+2026-02-02 16:33:30,267 | INFO | Chunking pagina 19 - testo: 1870 char
+2026-02-02 16:33:30,267 | INFO | Chunking pagina 20 - testo: 815 char
+2026-02-02 16:33:30,267 | INFO | Elaborata pagina 20/60 - 49 chunk creati
+2026-02-02 16:33:30,267 | INFO | Chunking pagina 21 - testo: 29 char
+2026-02-02 16:33:30,267 | INFO | Chunking pagina 22 - testo: 521 char
+2026-02-02 16:33:30,271 | INFO | Chunking pagina 23 - testo: 805 char
+2026-02-02 16:33:30,271 | INFO | Chunking pagina 24 - testo: 527 char
+2026-02-02 16:33:30,271 | INFO | Chunking pagina 25 - testo: 457 char
+2026-02-02 16:33:30,273 | INFO | Elaborata pagina 25/60 - 58 chunk creati
+2026-02-02 16:33:30,273 | INFO | Chunking pagina 26 - testo: 646 char
+2026-02-02 16:33:30,273 | INFO | Chunking pagina 27 - testo: 876 char
+2026-02-02 16:33:30,273 | INFO | Chunking pagina 28 - testo: 1025 char
+2026-02-02 16:33:30,273 | INFO | Chunking pagina 29 - testo: 1556 char
+2026-02-02 16:33:30,273 | INFO | Chunking pagina 30 - testo: 915 char
+2026-02-02 16:33:30,273 | INFO | Elaborata pagina 30/60 - 70 chunk creati
+2026-02-02 16:33:30,273 | INFO | Chunking pagina 31 - testo: 783 char
+2026-02-02 16:33:30,273 | INFO | Chunking pagina 32 - testo: 1247 char
+2026-02-02 16:33:30,273 | INFO | Chunking pagina 33 - testo: 1074 char
+2026-02-02 16:33:30,273 | INFO | Chunking pagina 34 - testo: 1010 char
+2026-02-02 16:33:30,273 | INFO | Chunking pagina 35 - testo: 1428 char
+2026-02-02 16:33:30,273 | INFO | Elaborata pagina 35/60 - 81 chunk creati
+2026-02-02 16:33:30,273 | INFO | Chunking pagina 36 - testo: 707 char
+2026-02-02 16:33:30,281 | INFO | Chunking pagina 37 - testo: 29 char
+2026-02-02 16:33:30,281 | INFO | Chunking pagina 38 - testo: 2172 char
+2026-02-02 16:33:30,281 | INFO | Chunking pagina 39 - testo: 2152 char
+2026-02-02 16:33:30,282 | INFO | Chunking pagina 40 - testo: 235 char
+2026-02-02 16:33:30,282 | INFO | Elaborata pagina 40/60 - 92 chunk creati
+2026-02-02 16:33:30,282 | INFO | Chunking pagina 41 - testo: 719 char
+2026-02-02 16:33:30,282 | INFO | Chunking pagina 42 - testo: 1311 char
+2026-02-02 16:33:30,282 | INFO | Chunking pagina 43 - testo: 29 char
+2026-02-02 16:33:30,282 | INFO | Chunking pagina 44 - testo: 616 char
+2026-02-02 16:33:30,282 | INFO | Chunking pagina 45 - testo: 1429 char
+2026-02-02 16:33:30,282 | INFO | Elaborata pagina 45/60 - 103 chunk creati
+2026-02-02 16:33:30,282 | INFO | Chunking pagina 46 - testo: 1039 char
+2026-02-02 16:33:30,282 | INFO | Chunking pagina 47 - testo: 1508 char
+2026-02-02 16:33:30,282 | INFO | Chunking pagina 48 - testo: 136 char
+2026-02-02 16:33:30,282 | INFO | Chunking pagina 49 - testo: 29 char
+2026-02-02 16:33:30,282 | INFO | Chunking pagina 50 - testo: 945 char
+2026-02-02 16:33:30,282 | INFO | Elaborata pagina 50/60 - 112 chunk creati
+2026-02-02 16:33:30,282 | INFO | Chunking pagina 51 - testo: 29 char
+2026-02-02 16:33:30,282 | INFO | Chunking pagina 52 - testo: 1469 char
+2026-02-02 16:33:30,282 | INFO | Chunking pagina 53 - testo: 1621 char
+2026-02-02 16:33:30,282 | INFO | Chunking pagina 54 - testo: 1841 char
+2026-02-02 16:33:30,282 | INFO | Chunking pagina 55 - testo: 491 char
+2026-02-02 16:33:30,291 | INFO | Elaborata pagina 55/60 - 122 chunk creati
+2026-02-02 16:33:30,291 | INFO | Chunking pagina 56 - testo: 1884 char
+2026-02-02 16:33:30,291 | INFO | Chunking pagina 57 - testo: 0 char
+2026-02-02 16:33:30,291 | INFO | Chunking pagina 58 - testo: 0 char
+2026-02-02 16:33:30,291 | INFO | Chunking pagina 59 - testo: 14 char
+2026-02-02 16:33:30,291 | INFO | Chunking pagina 60 - testo: 94 char
+2026-02-02 16:33:30,291 | INFO | Elaborata pagina 60/60 - 127 chunk creati
+2026-02-02 16:33:30,291 | INFO | Generazione HTML per electroline.pdf
+2026-02-02 16:33:30,291 | INFO | Creati 127 chunk per electroline.pdf
+2026-02-02 16:33:30,291 | INFO | Inizio ingestione manuale hisense.pdf (brand=hisense)
+2026-02-02 16:33:30,642 | INFO | Estratte 20 immagini da hisense.pdf
+2026-02-02 16:33:30,932 | INFO | Estratto testo da 76 pagine con struttura
+2026-02-02 16:33:30,932 | INFO | Chunking pagina 1 - testo: 132 char
+2026-02-02 16:33:30,933 | INFO | Elaborata pagina 1/76 - 1 chunk creati
+2026-02-02 16:33:30,933 | INFO | Chunking pagina 2 - testo: 296 char
+2026-02-02 16:33:30,933 | INFO | Chunking pagina 3 - testo: 1864 char
+2026-02-02 16:33:30,934 | INFO | Chunking pagina 4 - testo: 1248 char
+2026-02-02 16:33:30,934 | INFO | Chunking pagina 5 - testo: 1270 char
+2026-02-02 16:33:30,935 | INFO | Elaborata pagina 5/76 - 8 chunk creati
+2026-02-02 16:33:30,935 | INFO | Chunking pagina 6 - testo: 1204 char
+2026-02-02 16:33:30,935 | INFO | Chunking pagina 7 - testo: 1367 char
+2026-02-02 16:33:30,936 | INFO | Chunking pagina 8 - testo: 1271 char
+2026-02-02 16:33:30,936 | INFO | Chunking pagina 9 - testo: 1606 char
+2026-02-02 16:33:30,936 | INFO | Chunking pagina 10 - testo: 418 char
+2026-02-02 16:33:30,937 | INFO | Elaborata pagina 10/76 - 17 chunk creati
+2026-02-02 16:33:30,937 | INFO | Chunking pagina 11 - testo: 1093 char
+2026-02-02 16:33:30,937 | INFO | Chunking pagina 12 - testo: 599 char
+2026-02-02 16:33:30,937 | INFO | Chunking pagina 13 - testo: 934 char
+2026-02-02 16:33:30,938 | INFO | Chunking pagina 14 - testo: 997 char
+2026-02-02 16:33:30,938 | INFO | Chunking pagina 15 - testo: 912 char
+2026-02-02 16:33:30,938 | INFO | Elaborata pagina 15/76 - 23 chunk creati
+2026-02-02 16:33:30,938 | INFO | Chunking pagina 16 - testo: 1184 char
+2026-02-02 16:33:30,939 | INFO | Chunking pagina 17 - testo: 896 char
+2026-02-02 16:33:30,939 | INFO | Chunking pagina 18 - testo: 825 char
+2026-02-02 16:33:30,939 | INFO | Chunking pagina 19 - testo: 1182 char
+2026-02-02 16:33:30,939 | INFO | Chunking pagina 20 - testo: 912 char
+2026-02-02 16:33:30,941 | INFO | Elaborata pagina 20/76 - 31 chunk creati
+2026-02-02 16:33:30,941 | INFO | Chunking pagina 21 - testo: 944 char
+2026-02-02 16:33:30,941 | INFO | Chunking pagina 22 - testo: 890 char
+2026-02-02 16:33:30,941 | INFO | Chunking pagina 23 - testo: 301 char
+2026-02-02 16:33:30,942 | INFO | Chunking pagina 24 - testo: 1068 char
+2026-02-02 16:33:30,942 | INFO | Chunking pagina 25 - testo: 584 char
+2026-02-02 16:33:30,943 | INFO | Elaborata pagina 25/76 - 38 chunk creati
+2026-02-02 16:33:30,943 | INFO | Chunking pagina 26 - testo: 803 char
+2026-02-02 16:33:30,943 | INFO | Chunking pagina 27 - testo: 660 char
+2026-02-02 16:33:30,943 | INFO | Chunking pagina 28 - testo: 737 char
+2026-02-02 16:33:30,944 | INFO | Chunking pagina 29 - testo: 468 char
+2026-02-02 16:33:30,944 | INFO | Chunking pagina 30 - testo: 758 char
+2026-02-02 16:33:30,944 | INFO | Elaborata pagina 30/76 - 43 chunk creati
+2026-02-02 16:33:30,944 | INFO | Chunking pagina 31 - testo: 2135 char
+2026-02-02 16:33:30,945 | INFO | Chunking pagina 32 - testo: 2212 char
+2026-02-02 16:33:30,946 | INFO | Chunking pagina 33 - testo: 854 char
+2026-02-02 16:33:30,946 | INFO | Chunking pagina 34 - testo: 1174 char
+2026-02-02 16:33:30,946 | INFO | Chunking pagina 35 - testo: 1233 char
+2026-02-02 16:33:30,946 | INFO | Elaborata pagina 35/76 - 55 chunk creati
+2026-02-02 16:33:30,946 | INFO | Chunking pagina 36 - testo: 1125 char
+2026-02-02 16:33:30,946 | INFO | Chunking pagina 37 - testo: 1090 char
+2026-02-02 16:33:30,946 | INFO | Chunking pagina 38 - testo: 832 char
+2026-02-02 16:33:30,946 | INFO | Chunking pagina 39 - testo: 1613 char
+2026-02-02 16:33:30,946 | INFO | Chunking pagina 40 - testo: 1156 char
+2026-02-02 16:33:30,946 | INFO | Elaborata pagina 40/76 - 64 chunk creati
+2026-02-02 16:33:30,946 | INFO | Chunking pagina 41 - testo: 804 char
+2026-02-02 16:33:30,946 | INFO | Chunking pagina 42 - testo: 941 char
+2026-02-02 16:33:30,946 | INFO | Chunking pagina 43 - testo: 850 char
+2026-02-02 16:33:30,946 | INFO | Chunking pagina 44 - testo: 920 char
+2026-02-02 16:33:30,946 | INFO | Chunking pagina 45 - testo: 672 char
+2026-02-02 16:33:30,946 | INFO | Elaborata pagina 45/76 - 69 chunk creati
+2026-02-02 16:33:30,946 | INFO | Chunking pagina 46 - testo: 543 char
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 47 - testo: 2791 char
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 48 - testo: 2869 char
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 49 - testo: 770 char
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 50 - testo: 1100 char
+2026-02-02 16:33:30,951 | INFO | Elaborata pagina 50/76 - 79 chunk creati
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 51 - testo: 784 char
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 52 - testo: 497 char
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 53 - testo: 1068 char
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 54 - testo: 410 char
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 55 - testo: 1186 char
+2026-02-02 16:33:30,951 | INFO | Elaborata pagina 55/76 - 86 chunk creati
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 56 - testo: 1844 char
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 57 - testo: 2303 char
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 58 - testo: 2329 char
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 59 - testo: 799 char
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 60 - testo: 1027 char
+2026-02-02 16:33:30,951 | INFO | Elaborata pagina 60/76 - 97 chunk creati
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 61 - testo: 2131 char
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 62 - testo: 147 char
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 63 - testo: 756 char
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 64 - testo: 689 char
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 65 - testo: 2745 char
+2026-02-02 16:33:30,951 | INFO | Elaborata pagina 65/76 - 108 chunk creati
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 66 - testo: 2032 char
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 67 - testo: 1111 char
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 68 - testo: 760 char
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 69 - testo: 749 char
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 70 - testo: 1581 char
+2026-02-02 16:33:30,951 | INFO | Elaborata pagina 70/76 - 117 chunk creati
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 71 - testo: 1432 char
+2026-02-02 16:33:30,951 | INFO | Chunking pagina 72 - testo: 761 char
+2026-02-02 16:33:30,961 | INFO | Chunking pagina 73 - testo: 94 char
+2026-02-02 16:33:30,961 | INFO | Chunking pagina 74 - testo: 9 char
+2026-02-02 16:33:30,961 | INFO | Chunking pagina 75 - testo: 1502 char
+2026-02-02 16:33:30,962 | INFO | Elaborata pagina 75/76 - 125 chunk creati
+2026-02-02 16:33:30,962 | INFO | Chunking pagina 76 - testo: 34 char
+2026-02-02 16:33:30,962 | INFO | Generazione HTML per hisense.pdf
+2026-02-02 16:33:30,968 | INFO | Creati 126 chunk per hisense.pdf
+2026-02-02 16:33:31,105 | INFO | Generazione didascalie per le immagini...
+2026-02-02 16:33:32,074 | INFO | Captions esistenti caricate: 219
+2026-02-02 16:33:32,077 | INFO | Trovate 87 immagini totali
+2026-02-02 16:33:32,077 | INFO | Immagini da processare (nuove): 0
+2026-02-02 16:33:32,077 | INFO | Tutte le immagini hanno già una caption, skip generazione
+2026-02-02 16:33:32,077 | INFO | Captions caricati: 219 immagini
+2026-02-02 16:33:32,077 | INFO | Salvataggio indice con 352 chunk
+2026-02-02 16:33:59,342 | INFO | Indice salvato completamente
+2026-02-02 16:33:59,342 | INFO | Ingestione completata: manuali=3, chunk=352, immagini=87

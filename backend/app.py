@@ -74,7 +74,7 @@ def load_cache() -> None:
     _cached_chunks, _ = load_index()
 
 
-def build_llm_answer(question: str, context: List[str], images: List[ImageItem]) -> str:
+def build_llm_answer(question: str, context: List[str], images: List[ImageItem], full_paragraphs: List[str] = None) -> str:
     if not OPENAI_API_KEY:
         return "\n\n".join(context) if context else "Nessun risultato trovato."
 
@@ -100,26 +100,34 @@ def build_llm_answer(question: str, context: List[str], images: List[ImageItem])
         except:
             pass
     
-    # Crea lista immagini con captions
+    # Usa full_paragraphs se disponibili (contengono le immagini embedded), altrimenti usa context
+    context_text = ""
+    if full_paragraphs and len(full_paragraphs) > 0:
+        # Usa i paragrafi completi che già contengono le immagini inline
+        context_text = "\n\n".join(full_paragraphs) if full_paragraphs else "(nessun contenuto)"
+    else:
+        context_text = "\n\n".join(context) if context else "(nessun contenuto)"
+    
+    # Crea lista immagini con captions per riferimento
     image_list_items = []
     for img in images:
         caption = captions.get(img.url, "Immagine illustrativa")
         image_list_items.append(f"- {img.url} ({caption})")
     image_list = "\n".join(image_list_items) or "(nessuna)"
-    context_text = "\n\n".join(context) if context else "(nessun contenuto)"
 
     system_prompt = (
         "Sei un assistente tecnico. Rispondi in italiano in modo chiaro, "
         "preciso e con elenco puntato dei passi operativi. "
         "Usa solo le informazioni fornite nel contesto. "
-        "IMPORTANTE: Quando menzioni tabelle, diagrammi o riferimenti visivi, "
+        "IMPORTANTE: Il contesto contiene le immagini disponibili nel formato [IMMAGINE: URL - DIDASCALIA]. "
+        "Quando menzioni tabelle, diagrammi o riferimenti visivi, "
         "includi SEMPRE nella risposta i link alle immagini usando il formato markdown: "
-        "[DIDASCALIA_BREVE](URL). Usa come didascalia quella fornita tra parentesi per ogni immagine. "
+        "[DIDASCALIA_BREVE](URL). "
         "Le immagini verranno visualizzate inline con la didascalia sotto."
     )
     user_prompt = (
         f"Domanda:\n{question}\n\n"
-        f"Contesto (chunk):\n{context_text}\n\n"
+        f"Contesto (paragrafi completi con immagini inline):\n{context_text}\n\n"
         f"Immagini disponibili (URL e didascalia):\n{image_list}\n\n"
         "Genera una risposta dettagliata. Quando fai riferimento a tabelle o diagrammi, "
         "inserisci il link markdown usando ESATTAMENTE l'URL e la didascalia fornita, "
@@ -203,6 +211,7 @@ async def query(payload: QueryRequest) -> QueryResponse:
     sources: List[SourceItem] = []
     images: List[ImageItem] = []
     context_parts: List[str] = []
+    full_paragraphs: List[str] = []
 
     for chunk, score in results:
         link = f"{chunk.html_file}#{chunk.html_anchor}" if chunk.html_file else ""
@@ -217,9 +226,12 @@ async def query(payload: QueryRequest) -> QueryResponse:
             )
         )
         context_parts.append(chunk.text)
+        # Aggiungi il paragrafo completo (con immagini inline) per l'LLM
+        if chunk.full_paragraph:
+            full_paragraphs.append(chunk.full_paragraph)
         for img in chunk.images:
             images.append(ImageItem(chunk_id=chunk.id, url=img))
 
-    answer = build_llm_answer(payload.question, context_parts, images)
+    answer = build_llm_answer(payload.question, context_parts, images, full_paragraphs)
 
     return QueryResponse(answer=answer, sources=sources, images=images)

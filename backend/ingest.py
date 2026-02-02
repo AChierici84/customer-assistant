@@ -691,37 +691,81 @@ def ingest_pdf(pdf_path: Path) -> Tuple[List[Chunk], int]:
 
     for page_index, text in enumerate(pages_text, start=1):
         logger.info("Chunking pagina %d - testo: %d char", page_index, len(text))
-        pieces = chunk_text(text)
-        logger.info("Pagina %d chunked in %d pieces", page_index, len(pieces))
-        if not pieces and images_by_page.get(page_index):
-            pieces = [f"Contenuto visivo pagina {page_index}."]
+        
+        # Estrai i paragrafi mantenendo la struttura
+        title_pattern = re.compile(r"^\d+(?:\.\d+)*\.?\s+.+")
+        lines = [line.strip() for line in text.splitlines() if line.strip()]
+        
+        paragraphs: List[str] = []
+        current: List[str] = []
+        pending_title = ""
 
-        # Prepara nota sulla disponibilità di immagini per questa pagina CON didascalie
-        images_note = ""
-        if images_by_page.get(page_index):
-            image_descriptions = []
-            for img_url in images_by_page[page_index]:
-                caption = captions.get(img_url, "Immagine illustrativa")
-                image_descriptions.append(f"- {img_url}: {caption}")
-            images_note = f"\n\n[Immagini disponibili in questa pagina:\n" + "\n".join(image_descriptions) + "]"
+        for line in lines:
+            if title_pattern.match(line):
+                if current:
+                    paragraph_text = " ".join(current).strip()
+                    if pending_title:
+                        paragraph_text = f"{pending_title}\n{paragraph_text}"
+                        pending_title = ""
+                    paragraphs.append(paragraph_text)
+                    current = []
+                pending_title = line
+                continue
 
-        for piece in pieces:
-            chunk_id = str(uuid.uuid4())
-            html_file = ""
-            html_anchor = f"chunk-{chunk_id}"
-            # Includi nota sulle immagini nel testo del chunk
-            enhanced_text = piece + images_note if images_note else piece
-            chunk = Chunk(
-                id=chunk_id,
-                brand=brand,
-                manual=pdf_path.stem,
-                page=page_index,
-                text=enhanced_text,
-                images=images_by_page.get(page_index, []),
-                html_file=html_file,
-                html_anchor=html_anchor,
-            )
-            chunks.append(chunk)
+            if pending_title and not current and not title_pattern.match(line):
+                if len(line) <= 60 or (line and line[0].islower()):
+                    pending_title = f"{pending_title} {line}".strip()
+                    continue
+
+            current.append(line)
+
+        if current:
+            paragraph_text = " ".join(current).strip()
+            if pending_title:
+                paragraph_text = f"{pending_title}\n{paragraph_text}"
+                pending_title = ""
+            paragraphs.append(paragraph_text)
+        elif pending_title:
+            paragraphs.append(pending_title)
+
+        # Per ogni paragrafo, crea la versione con immagini embedded
+        for paragraph in paragraphs:
+            if not paragraph.strip():
+                continue
+
+            # Crea una versione del paragrafo con le immagini incorporate
+            full_paragraph_with_images = paragraph
+            page_images = images_by_page.get(page_index, [])
+            if page_images:
+                # Aggiungi le immagini alla fine del paragrafo con le loro didascalie
+                image_blocks = []
+                for img_url in page_images:
+                    caption = captions.get(img_url, "Immagine illustrativa")
+                    image_blocks.append(f"[IMMAGINE: {img_url} - {caption}]")
+                full_paragraph_with_images = f"{paragraph}\n\n" + "\n".join(image_blocks)
+
+            # Ora chunka il paragrafo se è troppo lungo
+            pieces = chunk_text(paragraph, size=1000, overlap=0)
+            if not pieces:
+                pieces = [paragraph]
+
+            # Per ogni chunk del paragrafo, crea un Chunk con il full_paragraph completo
+            for piece in pieces:
+                chunk_id = str(uuid.uuid4())
+                html_file = ""
+                html_anchor = f"chunk-{chunk_id}"
+                chunk = Chunk(
+                    id=chunk_id,
+                    brand=brand,
+                    manual=pdf_path.stem,
+                    page=page_index,
+                    text=piece,  # Il chunk segmentato per la ricerca
+                    images=page_images,
+                    html_file=html_file,
+                    html_anchor=html_anchor,
+                    full_paragraph=full_paragraph_with_images,  # Paragrafo completo con immagini per l'LLM
+                )
+                chunks.append(chunk)
         
         if page_index % 5 == 0 or page_index == 1:
             logger.info("Elaborata pagina %d/%d - %d chunk creati", page_index, len(pages_text), len(chunks))
