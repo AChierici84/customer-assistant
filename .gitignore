@@ -8,3 +8,11 @@ node_modules/
 dist/
 build/
 .vscode/
+
+# Vector store e file generati
+backend/storage/chroma/
+backend/storage/chunks.jsonl
+backend/storage/image_captions.json
+backend/storage/images/
+backend/storage/html/
+backend/storage/logs/
