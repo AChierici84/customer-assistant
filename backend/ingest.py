@@ -24,7 +24,7 @@ STORAGE_DIR = Path(__file__).resolve().parent / "storage"
 IMAGES_DIR = STORAGE_DIR / "images"
 HTML_DIR = STORAGE_DIR / "html"
 
-BRANDS = {"beko", "electroline", "hisense"}
+BRANDS = {"aspirapolvere", "condizionatore", "congelatore", "lavastoviglie", "lavatrice", "microonde", "plasma"}
 
 LOG_DIR = STORAGE_DIR / "logs"
 LOG_FILE = LOG_DIR / "ingest.log"
