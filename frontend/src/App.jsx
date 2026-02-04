@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import {
@@ -23,7 +23,7 @@ import {
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:8000";
 
-const brandOptions = ["", "beko", "electroline", "hisense"];
+const brandOptions = ["", "aspirapolvere", "condizionatore", "congelatore", "lavastoviglie", "lavatrice", "microonde", "plasma"];
 
 function MessageBubble({ role, text }) {
   const isUser = role === "user";
@@ -91,19 +91,21 @@ function MessageBubble({ role, text }) {
 }
 
 export default function App() {
+  const fileInputRef = useRef(null);
   const [messages, setMessages] = useState([
     {
       role: "assistant",
-      text: "Ciao! Posso aiutarti con i manuali. Scrivi una domanda oppure avvia l'ingestione."
+      text: "Ciao! Posso aiutarti con i manuali. Carica un file PDF oppure scrivi una domanda."
     }
   ]);
   const [input, setInput] = useState("");
   const [brand, setBrand] = useState("");
   const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [sources, setSources] = useState([]);
   const [images, setImages] = useState([]);
   const [answerText, setAnswerText] = useState("");
-  const [ingestStatus, setIngestStatus] = useState(null);
+  const [uploadStatus, setUploadStatus] = useState(null);
 
   const canSend = useMemo(() => input.trim().length > 0 && !loading, [input, loading]);
 
@@ -147,6 +149,59 @@ export default function App() {
     }
   };
 
+  const handleFileUpload = async (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    if (!file.name.toLowerCase().endsWith(".pdf")) {
+      setUploadStatus("Errore: carica solo file PDF");
+      return;
+    }
+
+    setUploading(true);
+    setUploadStatus("Caricamento in corso...");
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const response = await fetch(`${API_BASE}/upload`, {
+        method: "POST",
+        body: formData
+      });
+
+      if (!response.ok) {
+        throw new Error("Errore nel caricamento");
+      }
+
+      const data = await response.json();
+      setUploadStatus(`✓ Indicizzato: ${data.chunks} chunk, ${data.images} immagini`);
+      setMessages((prev) => [...prev, {
+        role: "assistant",
+        text: `Manuale caricato con successo! Indicizzati ${data.chunks} chunk e ${data.images} immagini.`
+      }]);
+    } catch (error) {
+      setUploadStatus("Errore nel caricamento del file");
+    } finally {
+      setUploading(false);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+    }
+  };
+
+  const handleClearChat = () => {
+    setMessages([
+      {
+        role: "assistant",
+        text: "Ciao! Posso aiutarti con i manuali. Carica un file PDF oppure scrivi una domanda."
+      }
+    ]);
+    setSources([]);
+    setImages([]);
+    setAnswerText("");
+  };
+
   const citedImages = useMemo(() => {
     return images;
   }, [images]);
@@ -177,19 +232,41 @@ export default function App() {
                 ))}
               </Select>
             </FormControl>
-            <Button variant="contained" onClick={handleIngest} disabled={ingestStatus === "loading"}>
-              Indicizza manuali
-            </Button>
-            {ingestStatus && (
-              <Chip
-                color={ingestStatus === "loading" ? "default" : "success"}
-                label={ingestStatus === "loading" ? "Ingestione in corso..." : ingestStatus}
+            <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept=".pdf"
+                onChange={handleFileUpload}
+                style={{ display: "none" }}
               />
-            )}
+              <Button 
+                variant="contained" 
+                onClick={() => fileInputRef.current?.click()}
+                disabled={uploading}
+              >
+                {uploading ? "Caricamento..." : "📤 Carica manuale"}
+              </Button>
+              {uploadStatus && (
+                <Chip
+                  color={uploadStatus.includes("Errore") ? "error" : "success"}
+                  label={uploadStatus}
+                  onDelete={() => setUploadStatus(null)}
+                />
+              )}
+            </Box>
           </Stack>
         </Paper>
 
         <Paper elevation={2} sx={{ p: 3, mb: 3 }}>
+          <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 2 }}>
+            <Typography variant="subtitle2" color="text.secondary">
+              Chat ({messages.length})
+            </Typography>
+            <Button size="small" variant="outlined" onClick={handleClearChat}>
+              🗑️ Svuota chat
+            </Button>
+          </Box>
           <Stack spacing={2} sx={{ minHeight: 360 }}>
             {messages.map((msg, index) => (
               <MessageBubble key={`${msg.role}-${index}`} role={msg.role} text={msg.text} />

@@ -2,9 +2,12 @@ fastapi==0.115.6
 uvicorn==0.30.6
 pdfplumber==0.11.4
 pymupdf==1.24.10
+pdf2image==1.16.3
+beautifulsoup4==4.12.2
 sentence-transformers==3.0.1
 numpy==1.26.4
 pillow==10.4.0
 chromadb==0.5.5
 openai==1.40.6
 python-dotenv==1.0.1
+python-multipar

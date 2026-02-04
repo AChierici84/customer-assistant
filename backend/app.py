@@ -2,16 +2,17 @@ from __future__ import annotations
 
 import os
 from typing import List, Optional
+from pathlib import Path
 
-from fastapi import FastAPI
+from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from openai import OpenAI
 from dotenv import load_dotenv
 from pydantic import BaseModel
 
-from .ingest import IngestResult, ingest_all
-from .rag import Chunk, load_index, search
+from .ingest import IngestResult, ingest_all, ingest_pdf, generate_image_captions, save_captions, load_image_captions
+from .rag import Chunk, load_index, search, save_index
 
 app = FastAPI(title="Customer Assistant RAG")
 
@@ -26,6 +27,7 @@ load_dotenv()
 
 BASE_DIR = os.path.dirname(__file__)
 STORAGE_DIR = os.path.join(BASE_DIR, "storage")
+MANUALS_DIR = os.path.join(os.path.dirname(BASE_DIR), "manuals")
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", "") or None
@@ -188,11 +190,54 @@ async def health() -> dict:
     return {"status": "ok"}
 
 
-@app.post("/ingest", response_model=IngestResponse)
-async def ingest() -> IngestResponse:
-    result: IngestResult = ingest_all()
-    load_cache()
-    return IngestResponse(manuals=result.manuals, chunks=result.chunks, images=result.images)
+@app.post("/upload", response_model=IngestResponse)
+async def upload_manual(file: UploadFile = File(...)) -> IngestResponse:
+    """Riceve un file PDF, lo salva in manuals/, e esegue l'ingestione."""
+    if not file.filename.lower().endswith('.pdf'):
+        raise HTTPException(status_code=400, detail="Solo file PDF sono consentiti")
+    
+    # Crea la cartella manuals se non esiste
+    Path(MANUALS_DIR).mkdir(parents=True, exist_ok=True)
+    
+    # Salva il file
+    file_path = Path(MANUALS_DIR) / file.filename
+    try:
+        contents = await file.read()
+        file_path.write_bytes(contents)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Errore nel salvataggio del file: {str(e)}")
+    
+    # Esegui l'ingestione del file singolo
+    try:
+        chunks, img_count = ingest_pdf(file_path)
+        
+        # Ricarica tutti i chunk dal disco (sia nuovi che precedenti)
+        from .rag import CHUNKS_PATH
+        all_chunks = []
+        if Path(CHUNKS_PATH).exists():
+            import json
+            with open(CHUNKS_PATH, "r", encoding="utf-8") as f:
+                for line in f:
+                    if line.strip():
+                        data = json.loads(line)
+                        from .rag import Chunk
+                        all_chunks.append(Chunk.from_json(data))
+        
+        # Aggiungi i nuovi chunk
+        all_chunks.extend(chunks)
+        
+        # Genera captions per le nuove immagini
+        generate_image_captions()
+        
+        # Salva l'indice aggiornato
+        save_index(all_chunks)
+        
+        # Ricarica la cache
+        load_cache()
+        
+        return IngestResponse(manuals=1, chunks=len(chunks), images=img_count)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Errore durante l'ingestione: {str(e)}")
 
 
 @app.post("/query", response_model=QueryResponse)
