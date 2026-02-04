@@ -179,6 +179,44 @@ Il tool:
    - Sorgenti (chunk) con link ai documenti HTML
    - Immagini correlate estratte dai manuali
 
+Esempi di ricerche:
+
+Risposta con markdown costruita a partire dal chunk:
+<img width="1834" height="798" alt="Screenshot 2026-02-04 082429" src="https://github.com/user-attachments/assets/6492e82d-7def-457b-8a0f-63bbcaabb674" />
+
+Gestione delle immagine inline nella risposta.
+<img width="1677" height="848" alt="Screenshot 2026-02-04 082443" src="https://github.com/user-attachments/assets/87d098c3-d91b-41d3-b830-3ae41110cd28" />
+
+Fonti e immagini associate:
+<img width="1325" height="633" alt="Screenshot 2026-02-04 082501" src="https://github.com/user-attachments/assets/d3319e74-2a5c-400a-bd35-927c55215d7e" />
+
+Cliccando si può visualizzare la versione html del pdf coi chunk (Massima trasparenza sul comportamento della rag ed explainability)
+<img width="1589" height="728" alt="Screenshot 2026-02-04 082604" src="https://github.com/user-attachments/assets/2de4a060-fab6-4e91-933a-3a57fefbc192" />
+
+L'LLM è istruito da prompt per fornire passi chiari con elenchi e guidare l'utente nelle sue necessità.
+<img width="1168" height="758" alt="Screenshot 2026-02-04 082744" src="https://github.com/user-attachments/assets/143c9055-7f60-4d1b-bf8e-8456cd3cef18" />
+Allegando le immagini che ritiene necessarie. La caption in questo senso aiuta l'llm nel comprendere che cosa è rappresentato.
+<img width="1292" height="643" alt="Screenshot 2026-02-04 082759" src="https://github.com/user-attachments/assets/22951685-dafa-4b6b-9110-7d06755d4ef5" />
+
+Esempi aggiuntivi con prodotti differenti:
+<img width="1624" height="866" alt="Screenshot 2026-02-04 083043" src="https://github.com/user-attachments/assets/3e31f1cc-3a34-44d9-9f26-dddab1c2c08c" />
+
+Lavastoviglie...
+<img width="1056" height="657" alt="Screenshot 2026-02-04 083240" src="https://github.com/user-attachments/assets/3d486082-f941-4575-be2b-4410ed880060" />
+
+Lavatrice con guida all'installazione.
+<img width="1092" height="865" alt="Screenshot 2026-02-04 083535" src="https://github.com/user-attachments/assets/771e989f-2798-41dc-b1d1-c36f3dc9e03e" />
+<img width="887" height="580" alt="Screenshot 2026-02-04 083542" src="https://github.com/user-attachments/assets/958743e7-2342-4ec0-875f-46f27ad1e7c2" />
+
+Microonde con consigli d'uso.
+<img width="1185" height="827" alt="Screenshot 2026-02-04 083729" src="https://github.com/user-attachments/assets/30c1a094-4cc9-45e5-a34a-31473b734a42" />
+
+Televisore al plasma
+<img width="1144" height="834" alt="Screenshot 2026-02-04 084111" src="https://github.com/user-attachments/assets/d9ec3665-1b55-4ca6-b23e-d0a7cae448b0" />
+
+
+Non ci sono personalizzazione per manuali specifici, può essere convertito qualsiasi manuale in formato pdf.
+
 ## API Endpoints
 
 ### `POST /upload`
