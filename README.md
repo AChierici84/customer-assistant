@@ -1,4 +1,4 @@
-# Customer Assistant - Sistema RAG per Manuali Tecnici
+# Customer Assistant - Sistema RAG Multimodale per Manuali Tecnici
 
 Sistema di assistenza clienti basato su RAG (Retrieval-Augmented Generation) per interrogare manuali tecnici di elettrodomestici con supporto per immagini e didascalie.
 
